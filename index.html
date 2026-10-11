@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Կրթական խաղ աշակերտների համար՝ ինչպես է քիմիան ազդում բնության վրա">
+  <title>Ի՞նչ ազդեցություն ունի քիմիան բնության վրա</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Անցնել հիմնական բովանդակությանը</a>
+
+  <div class="decor" aria-hidden="true">
+    <span class="leaf leaf-1">🍃</span>
+    <span class="leaf leaf-2">🌿</span>
+    <span class="leaf leaf-3">🍃</span>
+    <span class="bubble b1"></span>
+    <span class="bubble b2"></span>
+    <span class="bubble b3"></span>
+    <span class="drop d1"></span>
+    <span class="drop d2"></span>
+    <span class="molecule m1">●</span>
+    <span class="molecule m2">⬡</span>
+  </div>
+
+  <div id="app" class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">⚗️</span>
+        <span class="brand-text">Քիմիա և բնություն</span>
+      </div>
+      <div class="hud" aria-label="Խաղի վիճակ">
+        <div class="progress-wrap">
+          <span id="progress-label">Առաջընթաց՝ 0 / 5</span>
+          <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" aria-labelledby="progress-label">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+        <p class="score-chip" aria-live="polite">Միավոր՝ <strong id="score-value">0</strong></p>
+        <button type="button" class="icon-btn" id="btn-sound" aria-pressed="true" aria-label="Ձայնը միացված է">
+          <span aria-hidden="true">🔊</span>
+          <span class="icon-btn-text">Ձայն</span>
+        </button>
+        <button type="button" class="icon-btn" id="btn-home" aria-label="Գլխավոր էջ">🏠 Գլխավոր</button>
+        <button type="button" class="icon-btn danger" id="btn-restart" aria-label="Վերսկսել խաղը">↻ Վերսկսել</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <div id="live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+      <section id="screen-welcome" class="screen is-active" aria-labelledby="welcome-title">
+        <div class="welcome-grid">
+          <div class="welcome-copy">
+            <p class="eyebrow">Կրթական խաղ աշակերտների համար</p>
+            <h1 id="welcome-title">Ի՞նչ ազդեցություն ունի քիմիան բնության վրա</h1>
+            <p class="subtitle">Բացահայտի՛ր բնության գաղտնիքները, կատարի՛ր փորձեր և փրկի՛ր մեր մոլորակը։</p>
+            <p class="intro">
+              Քիմիան մեզ շրջապատում է ամենուր՝ ջրում, օդում, հողում և մեր տներում։
+              Նյութերը կարող են օգնել կամ վնասել բնությանը՝ կախված նրանից, թե ինչ նյութ է,
+              որքան է օգտագործվում և ինչպես է հայտնվում շրջակա միջավայրում։
+              Այս խաղում դու կսովորես խնամել ջուրը, օդը, հողը և առօրյա նյութերը։
+            </p>
+            <div class="cta-row">
+              <button type="button" class="btn btn-primary" id="btn-start">Սկսել խաղը</button>
+              <button type="button" class="btn btn-ghost" id="btn-howto">Ինչպե՞ս խաղալ</button>
+            </div>
+          </div>
+          <figure class="hero-art" aria-label="Անիմացված բնապատկեր՝ անտառ, գետ, լեռներ և լաբորատոր տարրեր">
+            <svg viewBox="0 0 520 420" role="img" aria-hidden="true">
+              <defs>
+                <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#87e0ff"/>
+                  <stop offset="100%" stop-color="#d4f4c8"/>
+                </linearGradient>
+                <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3ec6e0"/>
+                  <stop offset="100%" stop-color="#2aa7c4"/>
+                </linearGradient>
+              </defs>
+              <rect width="520" height="420" rx="28" fill="url(#skyGrad)"/>
+              <circle class="sun" cx="410" cy="78" r="36" fill="#ffd54f"/>
+              <path d="M20 250 L120 120 L210 250 Z" fill="#7cb342" opacity=".9"/>
+              <path d="M160 260 L280 90 L390 260 Z" fill="#558b2f"/>
+              <path d="M300 255 L420 140 L510 255 Z" fill="#33691e"/>
+              <ellipse cx="260" cy="330" rx="220" ry="48" fill="url(#riverGrad)"/>
+              <path class="wave" d="M40 330 Q90 310 140 330 T240 330 T340 330 T440 330" fill="none" stroke="#e8fbff" stroke-width="6"/>
+              <rect x="70" y="250" width="18" height="70" fill="#6d4c41"/>
+              <circle cx="79" cy="240" r="32" fill="#2e7d32"/>
+              <rect x="430" y="268" width="16" height="52" fill="#6d4c41"/>
+              <circle cx="438" cy="258" r="26" fill="#43a047"/>
+              <g class="flask">
+                <path d="M250 210 h28 v10 l18 48 a22 22 0 0 1-22 16 h-20 a22 22 0 0 1-22-16 l18-48 z" fill="#e0f7fa" stroke="#00695c" stroke-width="3"/>
+                <ellipse cx="264" cy="268" rx="18" ry="8" fill="#26a69a"/>
+              </g>
+              <g class="fish">
+                <ellipse cx="180" cy="338" rx="16" ry="8" fill="#ff8a65"/>
+                <polygon points="164,338 150,330 150,346" fill="#ff8a65"/>
+              </g>
+            </svg>
+          </figure>
+        </div>
+      </section>
+
+      <section id="screen-howto" class="screen" aria-labelledby="howto-title" hidden>
+        <article class="panel">
+          <h2 id="howto-title">Ինչպե՞ս խաղալ</h2>
+          <ol class="howto-list">
+            <li>Սեղմիր «Սկսել խաղը» և անցիր մակարդակները հերթով։ Հաջորդ մակարդակը բացվում է միայն նախորդը ավարտելուց հետո։</li>
+            <li>Յուրաքանչյուր մակարդակում կա փորձ և հինգ հարց։ Կարդա հրահանգը և գործիր ուշադիր։</li>
+            <li>Պլանշետի կամ խելացի գրատախտակի վրա կարող ես սեղմել առարկաներին։ Եթե քաշելը դժվար է, սեղմիր առարկային, ապա՝ ճիշտ արկղին։</li>
+            <li>Ճիշտ պատասխանի համար միավոր ես ստանում միայն մեկ անգամ։ Սխալից հետո կտեսնես բացատրություն։</li>
+            <li>Ձայնը կարող ես միացնել կամ անջատել վերևի կոճակով։ Առաջընթացը պահվում է այս սարքում։</li>
+          </ol>
+          <p class="note">Հիշի՛ր. քիմիական նյութերը ոչ միշտ են վտանգավոր և ոչ միշտ անվնաս։ Կարևոր են նյութը, քանակը, խտությունը և օգտագործման ձևը։</p>
+          <div class="cta-row">
+            <button type="button" class="btn btn-primary" id="btn-howto-start">Սկսել խաղը</button>
+            <button type="button" class="btn btn-ghost" id="btn-howto-back">Հետ</button>
+          </div>
+        </article>
+      </section>
+
+      <section id="screen-hub" class="screen" aria-labelledby="hub-title" hidden>
+        <div class="panel">
+          <h2 id="hub-title">Ընտրիր մակարդակը</h2>
+          <p class="lede">Ավարտիր մակարդակները հերթով։ Կանաչ նշանը ցույց է տալիս ավարտված մակարդակը։</p>
+          <div id="level-cards" class="level-grid"></div>
+        </div>
+      </section>
+
+      <section id="screen-level" class="screen" aria-labelledby="level-title" hidden>
+        <div class="panel level-panel">
+          <div class="level-head">
+            <p class="eyebrow" id="level-kicker">Մակարդակ</p>
+            <h2 id="level-title">Վերնագիր</h2>
+            <p id="level-goal" class="lede"></p>
+          </div>
+          <div id="level-root"></div>
+        </div>
+      </section>
+
+      <section id="screen-results" class="screen" aria-labelledby="results-title" hidden>
+        <article class="panel results-panel">
+          <h2 id="results-title">Խաղն ավարտված է</h2>
+          <div id="results-body"></div>
+          <div class="cta-row">
+            <button type="button" class="btn btn-primary" id="btn-replay-hub">Մակարդակների քարտեզ</button>
+            <button type="button" class="btn btn-ghost" id="btn-results-restart">Խաղալ նորից</button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <h2 id="modal-title">Վերսկսե՞լ խաղը</h2>
+      <p id="modal-text">Պահված առաջընթացը կջնջվի, և խաղը կսկսվի սկզբից։</p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-danger" id="modal-confirm">Այո, վերսկսել</button>
+        <button type="button" class="btn btn-ghost" id="modal-cancel">Չեղարկել</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>
