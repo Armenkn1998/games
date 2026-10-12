@@ -1534,7 +1534,7 @@
       tips.appendChild(li);
     });
     const h = document.createElement("h3");
-    h.textContent = "Ի՞նչ անել տանը և դպրոցում";
+    h.textContent = "Ի՞նչ անել տանը և դպրոցումjkhjkhjkhjk";
     wrap.append(score, stats, msg, h, tips);
     els.resultsBody.replaceChildren(wrap);
     confettiBurst();
@@ -1551,6 +1551,7 @@
     else audio.stopAmbient();
     announce(state.soundEnabled ? "Ձայնը միացված է" : "Ձայնը անջատված է");
   }
+  
 
   function openModal() {
 
