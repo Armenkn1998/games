@@ -1534,7 +1534,8 @@
       tips.appendChild(li);
     });
     const h = document.createElement("h3");
-    h.textContent = "Ի՞նչ անել տանը և դպրոցումsdfgsdfgsdfg";
+
+    h.textContent = "Ի՞նչ անել տանը և դպրոցում";
     wrap.append(score, stats, msg, h, tips);
     els.resultsBody.replaceChildren(wrap);
     confettiBurst();
